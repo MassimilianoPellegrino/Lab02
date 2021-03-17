@@ -1,11 +1,11 @@
 package it.polito.tdp.alien;
 
-public class Alien {
+public class Word {
 	
 	private String alienWord;
 	private String translation;
 	
-	public Alien(String alienWord, String translation) {
+	public Word(String alienWord, String translation) {
 		super();
 		this.alienWord = alienWord;
 		this.translation = translation;
@@ -43,7 +43,7 @@ public class Alien {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Alien other = (Alien) obj;
+		Word other = (Word) obj;
 		if (alienWord == null) {
 			if (other.alienWord != null)
 				return false;
@@ -51,7 +51,6 @@ public class Alien {
 			return false;
 		return true;
 	}
-	
-	
+
 	
 }
