@@ -35,22 +35,24 @@ public class FXMLController {
     void doTranslate(ActionEvent event) {
     	String inserimento = this.txtInserisci.getText().toLowerCase();
     	if(inserimento.matches(".*[0-9].*")) {
-    		this.txtRisultato.setText("ATTENZIONE: Inserire solamente caratteri alfabetici");
+    		this.txtRisultato.setText("Inserire solamente caratteri alfabetici");
     		return;
     	}
     	this.txtInserisci.clear();
-    	if(inserimento.contains(" ")) {
-    		String[] array = inserimento.split(" ");
-    		model.addWord(array[0], model.generaLista(array));
-    		this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
-    		return;
-    	}else {
-    		try{
-    			this.txtRisultato.setText(model.printTranslation(model.translateWord(inserimento)));
-    		}catch(NullPointerException e) {
-    			this.txtRisultato.setText("ATTENZIONE: Parola insesistente");
-    		}
-    		return;
+    	if(inserimento.matches(".*[a-z].*")) {
+	    	if(inserimento.contains(" ")) {
+	    		String[] array = inserimento.split(" ");
+	    		model.addWord(array[0], model.generaLista(array));
+	    		this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
+	    		return;
+	    	}else {
+	    		try{
+	    			this.txtRisultato.setText(model.printTranslation(model.translateWord(inserimento)));
+	    		}catch(NullPointerException e) {
+	    			this.txtRisultato.setText("Parola insesistente");
+	    		}
+	    		return;
+	    	}
     	}
     }
     
