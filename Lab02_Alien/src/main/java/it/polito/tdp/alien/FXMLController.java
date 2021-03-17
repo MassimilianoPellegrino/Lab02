@@ -41,8 +41,12 @@ public class FXMLController {
     	this.txtInserisci.clear();
     	if(inserimento.contains(" ")) {
     		String[] array = inserimento.split(" ");
-    		model.addWord(array[0], array[1]);
-    		this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
+    		if(array.length==2) {
+    			model.addWord(array[0], array[1]);
+    			this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
+    		}else {
+    			this.txtRisultato.setText("ATTENZIONE: Non inserire più di due parole");
+    		}
     	}else {
     		try{
     			model.translateWord(inserimento);
