@@ -41,19 +41,16 @@ public class FXMLController {
     	this.txtInserisci.clear();
     	if(inserimento.contains(" ")) {
     		String[] array = inserimento.split(" ");
-    		if(array.length==2) {
-    			model.addWord(array[0], array[1]);
-    			this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
-    		}else {
-    			this.txtRisultato.setText("ATTENZIONE: Non inserire più di due parole");
-    		}
+    		model.addWord(array[0], model.generaLista(array));
+    		this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
+    		return;
     	}else {
     		try{
-    			model.translateWord(inserimento);
-    			this.txtRisultato.setText(model.findWord(inserimento).getTranslation());
+    			this.txtRisultato.setText(model.printTranslation(model.translateWord(inserimento)));
     		}catch(NullPointerException e) {
     			this.txtRisultato.setText("ATTENZIONE: Parola insesistente");
-    		}	
+    		}
+    		return;
     	}
     }
     
