@@ -27,9 +27,29 @@ public class AlienWord {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof String)
+		if(obj instanceof String) {
 			if(obj.equals(this.getAlienWord()))
 				return true;
-		return false;
+			else if(((String) obj).length()!= this.getAlienWord().length())
+				return false;
+			else {
+				String s = this.getAlienWord();
+				int conta = 0;
+				for(int i=0; i<((String) obj).length(); i++) {
+					char co = ((String) obj).charAt(i);
+					char cs = s.charAt(i);
+					if(co!='?' && co!=cs)
+						return false;
+					if(co=='?')
+						conta++;
+				}
+				if(conta==1)
+					return true;
+				else
+					return false;
+			}	
+		}else
+			return false;
+		
 	}		
 }
