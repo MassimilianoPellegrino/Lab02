@@ -1,17 +1,19 @@
 package it.polito.tdp.alien;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class WordEnhanced {
 	
 	private String alienWord;
-	private List<String> translation;
+	private Set<String> translation;
 	
-	public WordEnhanced(String alienWord, List<String> translation) {
+	public WordEnhanced(String alienWord, Set<String> translation) {
 		super();
 		this.alienWord = alienWord;
-		this.translation = new LinkedList<>();
+		this.translation = new HashSet<>();
 		this.translation = translation;
 	}
 
@@ -23,11 +25,11 @@ public class WordEnhanced {
 		this.alienWord = alienWord;
 	}
 
-	public List<String> getTranslation() {
+	public Set<String> getTranslation() {
 		return translation;
 	}
 
-	public void setTranslation(List<String> translation) {
+	public void setTranslation(Set<String> translation) {
 		this.translation = translation;
 	}
 

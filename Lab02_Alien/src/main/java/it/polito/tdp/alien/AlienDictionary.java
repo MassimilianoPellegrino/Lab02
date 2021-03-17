@@ -1,15 +1,17 @@
 package it.polito.tdp.alien;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class AlienDictionary {
 
-	private List<WordEnhanced> dizionario;
+	private Set<WordEnhanced> dizionario;
 
 	public AlienDictionary() {
 		super();
-		this.dizionario = new LinkedList<>();
+		this.dizionario = new HashSet<>();
 	}
 	
 	public WordEnhanced findWord(String alienWord) {
@@ -21,15 +23,15 @@ public class AlienDictionary {
 		return null;
 	}
 	
-	public List<String> generaLista(String[] array) {
-		LinkedList<String> lista = new LinkedList<>();
+	public Set<String> generaLista(String[] array) {
+		HashSet<String> lista = new HashSet<>();
 		for(int i=1; i<array.length; i++) {
 			lista.add(array[i]);
 		}
 		return lista;
 	}
 	
-	public void addWord(String alienWord, List<String> translation) {
+	public void addWord(String alienWord, Set<String> translation) {
 		WordEnhanced w = findWord(alienWord);
 		if(w != null)
 			w.setTranslation(translation);
@@ -40,7 +42,7 @@ public class AlienDictionary {
 			
 	}
 	
-	public List<String> translateWord(String alienWord) {
+	public Set<String> translateWord(String alienWord) {
 		WordEnhanced w = findWord(alienWord);
 		if(w==null)
 			return null;
@@ -48,7 +50,7 @@ public class AlienDictionary {
 			return w.getTranslation();
 	}
 	
-	public String printTranslation(List<String> lista) {
+	public String printTranslation(Set<String> lista) {
 		String elenco = "";
 		for(String s: lista) {
 			elenco+=s+"\n";

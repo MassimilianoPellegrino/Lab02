@@ -33,6 +33,7 @@ public class FXMLController {
 
     @FXML
     void doTranslate(ActionEvent event) {
+    	this.txtRisultato.clear();
     	String inserimento = this.txtInserisci.getText().toLowerCase();
     	if(inserimento.matches(".*[0-9].*")) {
     		this.txtRisultato.setText("Inserire solamente caratteri alfabetici");
