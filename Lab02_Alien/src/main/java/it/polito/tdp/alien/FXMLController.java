@@ -2,6 +2,7 @@ package it.polito.tdp.alien;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +11,8 @@ import javafx.scene.control.TextField;
 
 public class FXMLController {
 
+	private AlienDictionary model;
+	
     @FXML
     private ResourceBundle resources;
 
@@ -29,15 +32,38 @@ public class FXMLController {
     private Button btnClear;
 
     @FXML
-    void doClear(ActionEvent event) {
-
-    }
-
-    @FXML
     void doTranslate(ActionEvent event) {
-
+    	String inserimento = this.txtInserisci.getText().toLowerCase();
+    	if(inserimento.matches(".*[0-9].*")) {
+    		this.txtRisultato.setText("ATTENZIONE: Inserire solamente caratteri alfabetici");
+    		return;
+    	}
+    	this.txtInserisci.clear();
+    	if(inserimento.contains(" ")) {
+    		String[] array = inserimento.split(" ");
+    		model.addWord(array[0], array[1]);
+    		this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
+    	}else {
+    		try{
+    			model.translateWord(inserimento);
+    			this.txtRisultato.setText(model.findWord(inserimento).getTranslation());
+    		}catch(NullPointerException e) {
+    			this.txtRisultato.setText("ATTENZIONE: Parola insesistente");
+    		}	
+    	}
+    }
+    
+    @FXML
+    void doClear(ActionEvent event) {
+    	this.txtInserisci.clear();
+    	this.txtRisultato.clear();
+    	model.reset();
     }
 
+    public void setModel(AlienDictionary model) {
+    	this.model=model;
+    }
+    
     @FXML
     void initialize() {
         assert txtInserisci != null : "fx:id=\"txtInserisci\" was not injected: check your FXML file 'Scene.fxml'.";
