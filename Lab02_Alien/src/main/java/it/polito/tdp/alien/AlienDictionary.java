@@ -1,8 +1,6 @@
 package it.polito.tdp.alien;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 public class AlienDictionary {
