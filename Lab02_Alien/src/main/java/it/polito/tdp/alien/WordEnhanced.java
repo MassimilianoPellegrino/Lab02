@@ -29,5 +29,13 @@ public class WordEnhanced {
 		this.translation = translation;
 	}
 
+	public String toString() {
+		String elenco = "";
+		for(String s: this.getTranslation()) {
+			elenco+=s+"\n";
+		}
+		return elenco;
+	}
+	
 	
 }

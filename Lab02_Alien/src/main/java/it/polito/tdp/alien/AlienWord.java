@@ -27,20 +27,9 @@ public class AlienWord {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AlienWord other = (AlienWord) obj;
-		if (alienWord == null) {
-			if (other.alienWord != null)
-				return false;
-		} else if (!alienWord.equals(other.alienWord))
-			return false;
-		return true;
-	}
-	
-	
+		if(obj instanceof String)
+			if(obj.equals(this.getAlienWord()))
+				return true;
+		return false;
+	}		
 }

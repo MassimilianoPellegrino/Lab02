@@ -13,7 +13,7 @@ public class AlienDictionary {
 		this.dizionario = new HashSet<>();
 	}
 	
-	public WordEnhanced findWord(AlienWord alienWord) {
+	public WordEnhanced findWord(String alienWord) {
 		for(WordEnhanced w: dizionario) {
 			if(w.getAlienWord().equals(alienWord)) {
 				return w;
@@ -23,34 +23,26 @@ public class AlienDictionary {
 	}
 	
 	public Set<String> generaLista(String[] array) {
-		HashSet<String> lista = new LinkedHashSet<>();
+		Set<String> lista = new LinkedHashSet<>();
 		for(int i=1; i<array.length; i++) {
 			lista.add(array[i]);
 		}
 		return lista;
 	}
 	
-	public AlienWord generaParola(String alienWord) {
-		AlienWord aw = new AlienWord(alienWord);
-		WordEnhanced w = findWord(aw);
-		if(w!=null)
-			return w.getAlienWord();
-		else
-			return aw;
-	}
-	
-	public void addWord(AlienWord alienWord, Set<String> translation) {
+	public void addWord(String alienWord, Set<String> translation) {
 		WordEnhanced w = findWord(alienWord);
 		if(w != null)
 			w.setTranslation(translation);
 		else {
-			w = new WordEnhanced(alienWord, translation);
+			AlienWord aw = new AlienWord(alienWord);
+			w = new WordEnhanced(aw, translation);
 			dizionario.add(w);
 		}
 			
 	}
 	
-	public Set<String> translateWord(AlienWord alienWord) {
+	public Set<String> translateWord(String alienWord) {
 		WordEnhanced w = findWord(alienWord);
 		if(w==null)
 			return null;
@@ -58,14 +50,10 @@ public class AlienDictionary {
 			return w.getTranslation();
 	}
 	
-	public String printTranslation(AlienWord aw) {
+	public String printTranslation(String aw) {
 		WordEnhanced we = findWord(aw);
-		String elenco = "";
-		for(String s: we.getTranslation()) {
-			elenco+=s+"\n";
-		}
 		
-		return elenco;
+		return we.toString();
 	}
 	
 	public void reset() {

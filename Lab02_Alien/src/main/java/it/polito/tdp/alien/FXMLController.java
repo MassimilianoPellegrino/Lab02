@@ -43,12 +43,12 @@ public class FXMLController {
     	if(inserimento.matches(".*[a-z].*")) {
 	    	if(inserimento.contains(" ")) {
 	    		String[] array = inserimento.split(" ");
-	    		model.addWord(model.generaParola(array[0]), model.generaLista(array));
+	    		model.addWord(array[0], model.generaLista(array));
 	    		this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
 	    		return;
 	    	}else {
 	    		try{
-	    			this.txtRisultato.setText(model.printTranslation(model.generaParola(inserimento)));
+	    			this.txtRisultato.setText(model.printTranslation(inserimento));
 	    		}catch(NullPointerException e) {
 	    			this.txtRisultato.setText("Parola insesistente");
 	    		}
