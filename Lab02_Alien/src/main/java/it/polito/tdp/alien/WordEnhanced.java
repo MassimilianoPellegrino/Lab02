@@ -30,9 +30,9 @@ public class WordEnhanced {
 	}
 
 	public String toString() {
-		String elenco = "";
+		String elenco = this.getAlienWord()+":\n";
 		for(String s: this.getTranslation()) {
-			elenco+=s+"\n";
+			elenco+=" "+s+"\n";
 		}
 		return elenco;
 	}

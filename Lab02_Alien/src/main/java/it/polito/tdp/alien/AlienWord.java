@@ -51,5 +51,12 @@ public class AlienWord {
 		}else
 			return false;
 		
-	}		
+	}
+
+	@Override
+	public String toString() {
+		return alienWord;
+	}
+	
+	
 }
