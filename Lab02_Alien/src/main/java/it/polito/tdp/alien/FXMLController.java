@@ -38,10 +38,10 @@ public class FXMLController {
     		this.txtRisultato.setText("Inserire solamente caratteri alfabetici");
     		return;
     	}
-    	this.txtInserisci.clear();
     	if(inserimento.matches(".*[a-z].*")) {
 	    	if(inserimento.contains(" ")) {
 	    		if(!inserimento.matches(".*[?].*")) {
+	    			this.txtInserisci.clear();
 		    		String[] array = inserimento.split(" ");
 		    		model.addWord(array[0], model.generaLista(array));
 		    		this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
@@ -52,6 +52,7 @@ public class FXMLController {
 	    		}
 	    	}else {
 	    		try{
+	    			this.txtInserisci.clear();
 	    			this.txtRisultato.setText(model.printTranslation(inserimento));
 	    		}catch(NullPointerException e) {
 	    			this.txtRisultato.setText("Parola insesistente");
