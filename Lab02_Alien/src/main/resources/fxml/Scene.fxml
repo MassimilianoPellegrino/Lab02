@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -12,10 +14,7 @@
 
 <BorderPane prefHeight="343.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.alien.FXMLController">
    <top>
-      <Label text="Lab 2 - Alien Translator" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="10.0" />
-         </BorderPane.margin>
+      <Label alignment="CENTER" contentDisplay="CENTER" text="Lab 2 - Alien Translator" BorderPane.alignment="TOP_CENTER">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -25,23 +24,31 @@
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
    <center>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="TOP_CENTER">
+            <HBox alignment="CENTER">
                <children>
                   <Label text="Alien Text" />
-                  <TextField fx:id="txtInserisci" prefHeight="17.0" prefWidth="290.0">
+                  <TextField fx:id="txtInserisci" prefHeight="25.0" prefWidth="223.0">
                      <HBox.margin>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets left="30.0" right="20.0" />
                      </HBox.margin>
                   </TextField>
                   <Button fx:id="btnTranslate" defaultButton="true" mnemonicParsing="false" onAction="#doTranslate" text="Translate" />
+                  <ImageView fitHeight="45.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Alien-512.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </ImageView>
                </children>
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
             </HBox>
-            <HBox>
+            <HBox alignment="CENTER">
                <children>
                   <TextArea fx:id="txtRisultato" editable="false" promptText="Welcome to alien dictionary v2021...">
                      <HBox.margin>
@@ -54,7 +61,7 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="BOTTOM_RIGHT" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnClear" alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#doClear" text="Clear Text" />
          </children>
