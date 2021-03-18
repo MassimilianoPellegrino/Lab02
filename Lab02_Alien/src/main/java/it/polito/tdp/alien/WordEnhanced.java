@@ -34,7 +34,7 @@ public class WordEnhanced {
 		for(String s: this.getTranslation()) {
 			elenco+=" "+s+"\n";
 		}
-		return elenco;
+		return elenco+"\n";
 	}
 	
 	

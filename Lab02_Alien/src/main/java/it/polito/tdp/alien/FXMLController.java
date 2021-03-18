@@ -41,10 +41,15 @@ public class FXMLController {
     	this.txtInserisci.clear();
     	if(inserimento.matches(".*[a-z].*")) {
 	    	if(inserimento.contains(" ")) {
-	    		String[] array = inserimento.split(" ");
-	    		model.addWord(array[0], model.generaLista(array));
-	    		this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
-	    		return;
+	    		if(!inserimento.matches(".*[?].*")) {
+		    		String[] array = inserimento.split(" ");
+		    		model.addWord(array[0], model.generaLista(array));
+		    		this.txtRisultato.setText("Nuova traduzione inserita nel dizionario");
+		    		return;
+	    		}else {
+	    			this.txtRisultato.setText("Inserito carattere non valido");
+		    		return;
+	    		}
 	    	}else {
 	    		try{
 	    			this.txtRisultato.setText(model.printTranslation(inserimento));

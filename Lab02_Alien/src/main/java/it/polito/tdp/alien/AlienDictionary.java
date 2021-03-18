@@ -2,6 +2,8 @@ package it.polito.tdp.alien;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 public class AlienDictionary {
@@ -13,13 +15,17 @@ public class AlienDictionary {
 		this.dizionario = new HashSet<>();
 	}
 	
-	public WordEnhanced findWord(String alienWord) {
+	public List<WordEnhanced> findWord(String alienWord) {
+		List<WordEnhanced> set = new LinkedList<>();
 		for(WordEnhanced w: dizionario) {
 			if(w.getAlienWord().equals(alienWord)) {
-				return w;
+				set.add(w);
 			}
 		}
-		return null;
+		if(set.size()!=0)
+			return set;
+		else
+			return null;
 	}
 	
 	public Set<String> generaLista(String[] array) {
@@ -31,29 +37,34 @@ public class AlienDictionary {
 	}
 	
 	public void addWord(String alienWord, Set<String> translation) {
-		WordEnhanced w = findWord(alienWord);
-		if(w != null)
+		WordEnhanced w;
+		try{
+			w = findWord(alienWord).get(0);
 			w.setTranslation(translation);
-		else {
+		}catch(NullPointerException e) {
 			AlienWord aw = new AlienWord(alienWord);
 			w = new WordEnhanced(aw, translation);
 			dizionario.add(w);
 		}
+		
 			
 	}
 	
-	public Set<String> translateWord(String alienWord) {
+	/*public Set<String> translateWord(String alienWord) {
 		WordEnhanced w = findWord(alienWord);
 		if(w==null)
 			return null;
 		else
 			return w.getTranslation();
-	}
+	}*/
 	
 	public String printTranslation(String aw) {
-		WordEnhanced we = findWord(aw);
+		String trad= "";
+		List<WordEnhanced> we = findWord(aw);
+		for(WordEnhanced w: we)
+			trad+=w.toString();
 		
-		return we.toString();
+		return trad;
 	}
 	
 	public void reset() {
